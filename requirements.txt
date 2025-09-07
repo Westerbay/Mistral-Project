@@ -2,3 +2,4 @@ fastapi
 mistralai
 dotenv
 uvicorn
+pytest

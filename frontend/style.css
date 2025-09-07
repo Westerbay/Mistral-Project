@@ -24,6 +24,7 @@ main {
     height: 90%;
     background-color: rgba(240, 240, 240, 0.75);
     border-radius: 20px;    
+    position: relative;
 }
 
 form, #chat-box {
@@ -60,7 +61,7 @@ form textarea {
 
 select {
     max-width: 60%;
-    width: 300px;
+    width: 220px;
     font-size: 1em;
     font-weight: bold;
     margin: 2em;

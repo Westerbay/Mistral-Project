@@ -6,6 +6,6 @@ class AITranslate(AIModel):
         AIModel.__init__(self, mistral_model, api_key)
 
     def prefix_prompt(self):
-        return "I will give you a text to translate in english if I don't mention the language output, otherwise translate it in the mentionned language."
+        return "I will give you a text to translate into english if I don't mention the output language, otherwise translate it in the mentioned language."
 
     

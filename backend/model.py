@@ -18,14 +18,17 @@ class AIModel:
     def request(self, prompt):
         complete_prompt = self.prefix_prompt() + "\n" + prompt
         complete_prompt += "\n" + self.suffix_prompt()
-        chat_response = self.client.chat.complete(
-            model = self.mistral_model,
-            messages = [
-                {
-                    "role": "user",
-                    "content": complete_prompt
-                },
-            ]
-        )
-        response_choice = random.choice(chat_response.choices)
-        return response_choice.message.content
+        try:
+            chat_response = self.client.chat.complete(
+                model = self.mistral_model,
+                messages = [
+                    {
+                        "role": "user",
+                        "content": complete_prompt
+                    },
+                ]
+            )
+            response_choice = random.choice(chat_response.choices)
+            return response_choice.message.content
+        except Exception as e:
+            return "Missing or invalid MISTRAL_MODEL or MISTRAL_API_KEY\n" + str(e)
