@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    background-image: url('https://westerbay.github.io/Home-Page/img/background.png');
+    background-size: 100% auto;
+}
+
+main {
+    margin: auto;
+    max-width: 1000px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    background-color: rgba(240, 240, 240, 0.75);
+    border-radius: 20px;    
+}
+
+form, #chat-box {
+    margin: 1em;    
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto 120px;
+    align-items: center;
+}
+
+form textarea, form button, select {
+    padding: 1em;
+    border: none;
+    margin: 1em;
+    border-radius: 20px;
+    height: 52px;
+}
+
+form button, select {
+    background: rgba(68, 68, 68, 0.75);
+    cursor: pointer;
+    color: white;
+}
+
+form textarea {
+    resize: none;    
+    max-height: 200px;
+    font-family: inherit;
+    font-size: 1em; 
+    overflow-y: auto;
+}
+
+select {
+    max-width: 60%;
+    width: 300px;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 2em;
+}
+
+#chat-box {
+    flex: 1;
+    overflow: auto;
+}
+
+#chat-box div {
+    display: block;              
+    width: fit-content;          
+    max-width: 80%;              
+    border-radius: 20px;
+    padding: 1em;
+    word-wrap: break-word;      
+    opacity: 0;                  /* start invisible */
+    transform: translateY(10px); /* start slightly lower */
+    animation: fadeInUp 0.7s ease-out forwards;
+    white-space: pre-wrap;  
+}
+
+
+.user {
+    margin: 1em;
+    margin-left: auto;
+    background-color: white;
+}
+
+.ai {
+    margin-right: auto;
+    background-color: #caddef;
+    padding: 1em;
+    border-radius: 20px;
+    margin: 1em;
+    word-wrap: break-word;
+}
+
+.ai h3, .ai h2 {
+    margin: 0.5em 0;
+}
+
+.ai pre {
+    background: #2d2d2d;
+    color: #f8f8f2;
+    padding: 0.8em;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.9em;
+}
+
+.error {
+    margin-right: auto;
+    background-color: #fc8e78;
+    margin: 1em;
+}
+
+#chat-box div.thinking {
+    font-style: italic;
+    opacity: 0.6;
+    animation: blink 1.5s infinite ease-in-out;
+}
+
+ol, ul {
+    margin-left: 2em;
+}
+
+/** Animation **/
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%   { opacity: 0.3; }
+    50%  { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
