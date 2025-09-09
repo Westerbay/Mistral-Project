@@ -31,4 +31,4 @@ class AIModel:
             response_choice = random.choice(chat_response.choices)
             return response_choice.message.content
         except Exception as e:
-            return "Missing or invalid MISTRAL_MODEL or MISTRAL_API_KEY\n" + str(e)
+            return str(e)
