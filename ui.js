@@ -67,7 +67,7 @@ class UserInterface {
 
     request(route, success, data=null) {
         $.ajax({
-            url: `http://${this.serverAddr}:${this.serverPort}/${route}`,
+            url: `https://${this.serverAddr}/mistral/${route}`,
             type: "POST",
             contentType: "application/json",
             data: data,
@@ -119,7 +119,7 @@ class UserInterface {
 
     autoResizeUserInput() {
         const el = this.userInput[0];
-        el.style.height = "52px";
+        el.style.height = "56px";
         el.style.height = Math.min(el.scrollHeight, 200) + "px";
     }
 

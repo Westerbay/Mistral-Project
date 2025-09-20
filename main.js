@@ -1,4 +1,4 @@
-const serverAddr = "172.232.36.114";
+const serverAddr = "wester.games";
 const serverPort = 5555;
 
 $(document).ready(() => {
