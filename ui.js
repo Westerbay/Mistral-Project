@@ -20,21 +20,22 @@ class UserInterface {
         this.userInput.on("input", () => {
             this.autoResizeUserInput();
         });
+        this.userInput.keypress((event) => {
+            if (event.which === 13 && !event.shiftKey) {  
+                event.preventDefault();
+                this.chatForm.submit();
+            }
+        });
         this.modelSelector.on("change", (event) => {
             const selectedValue = $(event.target).val();
-            this.changeModel(selectedValue);
+            this.model = selectedValue;
+            this.changeModel();
         });
     }
 
-    changeModel(newModel) {
+    changeModel() {
         // First Clear the chat 
         this.chatBox.html("");
-        var data = JSON.stringify({
-            model : newModel
-        });
-
-        //Request to change model
-        this.request("change_model", () => {}, data);
 
         //Asking its role
         const prompt = "I let you introduce shortly your role in 30 words maximum in one paragraph.";
@@ -45,7 +46,8 @@ class UserInterface {
         // Disable submit button
         this.submitButton.prop("disabled", true);  
         const data = JSON.stringify({
-            prompt : prompt
+            prompt : prompt,
+            model : this.model
         });
 
         //Request
@@ -84,6 +86,7 @@ class UserInterface {
                 })
             );
         }
+        this.model = this.models[0];
         this.modelSelector.val(this.models[0]);
         this.changeModel(this.models[0]);
     }
