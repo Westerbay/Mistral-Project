@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Wester - Mistral ChatBot</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script src="https://westerbay.github.io/Home-Page/script/skull.js"></script>		
+		<link href='https://westerbay.github.io/Home-Page/style/skull.css' rel='stylesheet'>
+		<link href='https://westerbay.github.io/Home-Page/style/header.css' rel='stylesheet'>
+        <link href='https://westerbay.github.io/Home-Page/style/project.css' rel='stylesheet'>
+		<link href='https://westerbay.github.io/Home-Page/style/footer.css' rel='stylesheet'>
+		<link rel="icon" href="https://westerbay.github.io/Home-Page/img/icon.png">
+		<link href='style.css' rel='stylesheet'>
+        <script src="ui.js"></script>
+        <script src="main.js"></script>               
+    </head>
+    <body>
+        <main>
+            <aside>
+                <select id="modelSelector" name="model"></select>
+                <div id="chat-box"></div>            
+                <form id="chat-form">
+                    <textarea id="user-input" placeholder="Type your message..." required></textarea>
+                    <button type="submit">Send</button>
+                </form> 
+            </aside>            
+        </main>      
+        <script>load("Prototype");</script>         
+    </body>
+</html>
