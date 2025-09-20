@@ -25,7 +25,6 @@ class Application:
         self.models = {
             model: self.MODELS[model](mistral_model, api_key) for model in self.MODELS
         }
-        self.current_model_type = list(self.MODELS.keys())[0]
         self.app = FastAPI()
         self.app.add_middleware(
             CORSMiddleware,
@@ -38,25 +37,17 @@ class Application:
         self.port = port        
         self._add_routes()
 
-    def get_current_model(self):
-        return self.models[self.current_model_type]
+    def get_model(self, model):
+        return self.models[model]
     
     def run(self):
         uvicorn.run(self.app, host=self.host, port=self.port, reload=False)
 
     def _add_routes(self):
         @self.app.post("/request")
-        async def request(prompt: str = Body(..., embed=True)):
-            response = self.get_current_model().request(prompt)
+        async def request(prompt: str = Body(...), model: str = Body(...)):
+            response = self.get_model(model).request(prompt)
             return {"text": response}
-
-        @self.app.post("/change_model")
-        async def change_model(model: str = Body(..., embed=True)):
-            if model not in self.MODELS:
-                return {"status": "KO"}
-            else:
-                self.current_model_type = model
-                return {"status": "OK"}
 
         @self.app.post("/get_models")
         async def get_models():
